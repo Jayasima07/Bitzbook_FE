@@ -1,10 +1,10 @@
 const development = {
   // environment: 'development',
-  apiBaseUrl: "https://3.27.251.172/", // Local API URL
-  PO_Base_url: "https://3.27.251.172/",
-  SO_Base_url: "https://3.27.251.172/",
+  apiBaseUrl: "https://52.63.138.205/", // Local API URL
+  PO_Base_url: "https://52.63.138.205/",
+  SO_Base_url: "https://52.63.138.205/",
   // appName: 'MyReactApp (Dev)',
-  //local link -- https://3.27.251.172/
+  //local link -- https://52.63.138.205/
   //ilan link --  https://bizbooksbe-1.onrender.com/
   //local link -- https://backend-micro-service-1.onrender.com/
 };
