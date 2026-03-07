@@ -1,3 +1,3 @@
-const CommonAPIURL = "http://3.27.251.172:4000/api/v1/";
+const CommonAPIURL = "https://3.27.251.172/api/v1/";
 
 export default { CommonAPIURL }

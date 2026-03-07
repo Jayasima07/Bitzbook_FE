@@ -369,7 +369,7 @@ export default function EmailCommunications({ formik, contactId }) {
 
   // Get API base URL from environment or use a fallback
   // Make sure this matches your actual API base URL
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://3.27.251.172:4000";
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://3.27.251.172";
 
 
 
