@@ -61,7 +61,7 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [https://655q3bs1-3000.inc1.devtunnels.ms](https://655q3bs1-3000.inc1.devtunnels.ms) in your browser.
 
 Build for production:
 

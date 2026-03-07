@@ -651,7 +651,7 @@ const EditItemForm = () => {
           Item Not Found
         </Typography>
         <Typography variant="body1" sx={{ mb: 2 }}>
-          The item with ID "{itemId}" was not found in the database.
+          The item with ID {itemId} was not found in the database.
         </Typography>
         
         {/* Show available items */}
@@ -689,7 +689,7 @@ const EditItemForm = () => {
                   const firstItem = response.data.data[0];
                   const firstItemId = firstItem._id || firstItem.item_id || firstItem.id;
                   if (firstItemId) {
-                    console.log(`To test editing, go to: http://localhost:3000/item/edit/${firstItemId}`);
+                    console.log(`To test editing, go to: https://655q3bs1-3000.inc1.devtunnels.ms/item/edit/${firstItemId}`);
                     showMessage(`Click here to edit first item: ${firstItem.item_name || firstItem.name}`, "info");
                   }
                 } else {
