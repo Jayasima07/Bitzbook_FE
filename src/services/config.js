@@ -1,14 +1,14 @@
 const development = {
   // environment: 'development',
-  apiBaseUrl: "https://52.63.138.205/", // Local API URL
-  PO_Base_url: "https://52.63.138.205/",
-  SO_Base_url: "https://52.63.138.205/",
+  apiBaseUrl: "https://bitz.snsihub.tech/", // Local API URL
+  PO_Base_url: "https://bitz.snsihub.tech/",
+  SO_Base_url: "https://bitz.snsihub.tech/",
   // appName: 'MyReactApp (Dev)',
-  //local link -- https://52.63.138.205/
+  //local link -- https://bitz.snsihub.tech/
   //ilan link --  https://bizbooksbe-1.onrender.com/
   //local link -- https://backend-micro-service-1.onrender.com/
 };
-  
+
 const staging = {
   apiBaseUrl: "https://staging-api.example.com/", // Staging API URL
   PO_Base_url: "https://staging-api.example.com/", // Staging API URL
@@ -30,6 +30,6 @@ const config =
   process.env.REACT_APP_ENV === "staging"
     ? staging
     : process.env.REACT_APP_ENV === "production"
-    ? production
-    : development;
+      ? production
+      : development;
 export default config;

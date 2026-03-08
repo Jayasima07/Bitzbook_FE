@@ -369,7 +369,7 @@ export default function EmailCommunications({ formik, contactId }) {
 
   // Get API base URL from environment or use a fallback
   // Make sure this matches your actual API base URL
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://52.63.138.205";
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://bitz.snsihub.tech";
 
 
 
@@ -400,7 +400,7 @@ export default function EmailCommunications({ formik, contactId }) {
       setEmailList(emailList.map((email) => ({ ...email, selected: true })));
     }
   };
-  
+
   const handleEmailSelection = (emailId, isChecked) => {
     setEmailList((prevEmailList) =>
       prevEmailList.map((email) =>
@@ -420,11 +420,11 @@ export default function EmailCommunications({ formik, contactId }) {
       try {
         setLoading(true);
         setApiError(null);
-        
+
         // Get necessary credentials
         const organization_id = localStorage.getItem("organization_id");
         const token = localStorage.getItem("token");
-        
+
         if (!organization_id || !token) {
           throw new Error("Missing authentication credentials");
         }
@@ -432,7 +432,7 @@ export default function EmailCommunications({ formik, contactId }) {
         const response = await axios({
           method: 'GET',
           url: `${API_BASE_URL}/api/v1/contact/${contactId}`,
-            customBaseUrl: config.SO_Base_url,
+          customBaseUrl: config.SO_Base_url,
           params: { organization_id },
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -446,12 +446,12 @@ export default function EmailCommunications({ formik, contactId }) {
         });
 
         console.log("API Response:", response);
-        
+
         const data = response.data;
 
         if (data && data.status === true && data.data?.contact_persons) {
           const contactPersons = data.data.contact_persons;
-          
+
           if (contactPersons.length > 0) {
             const formattedContacts = contactPersons.map((person) => ({
               id: person.contact_person_id,
@@ -468,7 +468,7 @@ export default function EmailCommunications({ formik, contactId }) {
                 department: person.department || ''
               }
             }));
-            
+
             setEmailList(formattedContacts);
             console.log("Email list updated with contacts:", formattedContacts);
           } else {
@@ -482,7 +482,7 @@ export default function EmailCommunications({ formik, contactId }) {
         }
       } catch (error) {
         console.error("Error fetching contact details:", error);
-        
+
         if (error.response) {
           setApiError(`Server error: ${error.response.status} - ${error.response.data.message || 'Unknown error'}`);
         } else if (error.request) {
@@ -491,7 +491,7 @@ export default function EmailCommunications({ formik, contactId }) {
           console.error("Error setting up request:", error.message);
           setApiError(`Error: ${error.message}`);
         }
-        
+
         setEmailList([]);
       } finally {
         setLoading(false);
@@ -524,7 +524,7 @@ export default function EmailCommunications({ formik, contactId }) {
       // Get necessary credentials
       const organization_id = localStorage.getItem("organization_id");
       const token = localStorage.getItem("token");
-      
+
       if (!organization_id || !token) {
         throw new Error("Missing authentication credentials");
       }
@@ -546,7 +546,7 @@ export default function EmailCommunications({ formik, contactId }) {
       };
 
       setLoading(true);
-      
+
       // Use axios directly for saving the contact person
       const response = await axios({
         method: 'post',
@@ -562,7 +562,7 @@ export default function EmailCommunications({ formik, contactId }) {
       if (response.data && response.data.status === true) {
         // Add the new contact to the email list with the ID from the API
         const newContactPerson = response.data.data?.contact_person;
-        
+
         const updatedContact = {
           id: newContactPerson?.contact_person_id || Date.now(),
           name: `${newContact.firstName} ${newContact.lastName}`,
@@ -587,7 +587,7 @@ export default function EmailCommunications({ formik, contactId }) {
     } catch (error) {
       console.error("Error saving contact person:", error);
       let errorMessage = "Failed to save contact person";
-      
+
       if (error.response) {
         errorMessage = error.response.data?.message || errorMessage;
       } else if (error.request) {
@@ -595,7 +595,7 @@ export default function EmailCommunications({ formik, contactId }) {
       } else {
         errorMessage = error.message || errorMessage;
       }
-      
+
       alert(errorMessage);
     } finally {
       setLoading(false);
@@ -609,7 +609,7 @@ export default function EmailCommunications({ formik, contactId }) {
           width: "100%",
           padding: "0 8px",
           backgroundColor: "#fff",
-         position: 'flex', 
+          position: 'flex',
 
         }}
       >
@@ -645,7 +645,7 @@ export default function EmailCommunications({ formik, contactId }) {
                 color: hasSelectedEmails ? "#ff3b30" : "#2196f3",
                 fontSize: "13px",
                 pr: "5px",
-                ml:"5px",
+                ml: "5px",
                 p: 0,
                 minWidth: "auto",
                 "&:hover": {
@@ -735,7 +735,7 @@ export default function EmailCommunications({ formik, contactId }) {
                       height: "auto",
                       maxHeight: "60px",
                       // marginBottom: "10px",
-                      margin:"5px 10px 5px 0px"
+                      margin: "5px 10px 5px 0px"
                     }}
                   >
                     <Checkbox
@@ -801,7 +801,7 @@ export default function EmailCommunications({ formik, contactId }) {
                   </Box>
                 ))
               ) : (
-                <Typography variant="body2" sx={{ color: '#757575', ml: 1,my:1.5 }}>
+                <Typography variant="body2" sx={{ color: '#757575', ml: 1, my: 1.5 }}>
                   No contact persons found. Click `Add New` to add contacts.
                 </Typography>
               )}
